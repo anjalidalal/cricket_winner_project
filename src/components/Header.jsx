@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import AuthModal from "./AuthModal";
+import { Box } from "@mui/material";
+import { Tabs } from "@mui/material";
+import { Tab } from "@mui/material";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  //const [isOpenSearchInput, setIsOpenSearchInput] = useState(false);
+  const [value, setValue] = useState("1");
   const [authMethod, setAuthMethod] = useState("");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -14,14 +21,6 @@ const Header = () => {
   const closeModal = () => {
     setIsOpenModal(false);
   };
-
-  // const openSearchModal = () => {
-  //   setIsOpenSearchInput(true);
-  // };
-
-  // const closeSearchModal = () => {
-  //   setIsOpenSearchInput(false);
-  // };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -180,15 +179,87 @@ const Header = () => {
         </div>
         <div className="navbar">
           <div className="desktop-menu">
-            <ul>
-              <li>Home</li>
-              <li>News</li>
-              <li>Fantasy Tips</li>
-              <li>Match Predictions</li>
-              <li>IPL 2023</li>
-              <li>Web Stories</li>
-              <li>Leaderboards</li>
-            </ul>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              TabIndicatorProps={{
+                style: {
+                  backgroundColor: "#ffc305",
+                },
+              }}
+              aria-label="secondary tabs example"
+            >
+              <Tab
+                value="1"
+                sx={{
+                  color: "white",
+                  fontWeight: "700",
+                  textTransform: "capitalize",
+                  "&.Mui-selected": { color: "#ffc305" },
+                }}
+                label="Home"
+              />
+              <Tab
+                value="2"
+                sx={{
+                  color: "white",
+                  fontWeight: "700",
+                  textTransform: "capitalize",
+                  "&.Mui-selected": { color: "#ffc305" },
+                }}
+                label="News"
+              />
+              <Tab
+                value="3"
+                sx={{
+                  color: "white",
+                  fontWeight: "700",
+                  textTransform: "capitalize",
+                  "&.Mui-selected": { color: "#ffc305" },
+                }}
+                label="Fantasy Tips"
+              />
+              <Tab
+                value="4"
+                sx={{
+                  color: "white",
+                  fontWeight: "700",
+                  textTransform: "capitalize",
+                  "&.Mui-selected": { color: "#ffc305" },
+                }}
+                label="Match Predictions"
+              />
+              <Tab
+                value="5"
+                sx={{
+                  color: "white",
+                  fontWeight: "700",
+                  textTransform: "capitalize",
+                  "&.Mui-selected": { color: "#ffc305" },
+                }}
+                label="IPL 2023"
+              />
+              <Tab
+                value="6"
+                sx={{
+                  color: "white",
+                  fontWeight: "700",
+                  textTransform: "capitalize",
+                  "&.Mui-selected": { color: "#ffc305" },
+                }}
+                label="Web Stories"
+              />
+              <Tab
+                value="7"
+                sx={{
+                  color: "white",
+                  fontWeight: "700",
+                  textTransform: "capitalize",
+                  "&.Mui-selected": { color: "#ffc305" },
+                }}
+                label="Leaderboards"
+              />
+            </Tabs>
             <div className="be-an-expert">
               <span className="parent-span">Be an Expert</span>{" "}
               <svg
@@ -217,3 +288,11 @@ const Header = () => {
 };
 
 export default Header;
+
+{
+  /* <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
+  <LinkTab label="Page One" href="/drafts" />
+  <LinkTab label="Page Two" href="/trash" />
+  <LinkTab label="Page Three" href="/spam" />
+</Tabs> */
+}
