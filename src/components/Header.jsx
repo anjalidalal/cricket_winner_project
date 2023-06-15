@@ -11,6 +11,7 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate(location.pathname);
   const [value, setValue] = useState("/");
+  const [path, setPath] = useState("/");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -27,6 +28,9 @@ const Header = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+  const mobileNavigation = (path) => {
+    navigate(path);
   };
 
   return (
@@ -66,13 +70,48 @@ const Header = () => {
               <div className="menu-items">
                 <div className="foot-data-links">
                   <ul>
-                    <li className="menu-list">Home</li>
-                    <li className="menu-list">News</li>
-                    <li className="menu-list">Fantasy Tips</li>
-                    <li className="menu-list">Match Predictions</li>
-                    <li className="menu-list">IPL 2023</li>
-                    <li className="menu-list">Web Stories</li>
-                    <li className="menu-list">Leaderboards</li>
+                    <li
+                      className="menu-list"
+                      onClick={() => mobileNavigation("/")}
+                    >
+                      Home
+                    </li>
+                    <li
+                      className="menu-list"
+                      onClick={() => mobileNavigation("/news")}
+                    >
+                      News
+                    </li>
+                    <li
+                      className="menu-list"
+                      onClick={() => mobileNavigation("/fantasy-tips")}
+                    >
+                      Fantasy Tips
+                    </li>
+                    <li
+                      className="menu-list"
+                      onClick={() => mobileNavigation("/match-predictions")}
+                    >
+                      Match Predictions
+                    </li>
+                    <li
+                      className="menu-list"
+                      onClick={() => mobileNavigation("/ipl")}
+                    >
+                      IPL 2023
+                    </li>
+                    <li
+                      className="menu-list"
+                      onClick={() => mobileNavigation("/web-stories")}
+                    >
+                      Web Stories
+                    </li>
+                    <li
+                      className="menu-list"
+                      onClick={() => mobileNavigation("/leader-boards")}
+                    >
+                      Leaderboards
+                    </li>
                   </ul>
                 </div>
               </div>
