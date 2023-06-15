@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import AuthModal from "./AuthModal";
-import { Box } from "@mui/material";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Tabs } from "@mui/material";
 import { Tab } from "@mui/material";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [value, setValue] = useState("1");
   const [authMethod, setAuthMethod] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate(location.pathname);
+  const [value, setValue] = useState("/");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    navigate(newValue);
   };
 
   const openModal = () => {
@@ -190,7 +193,7 @@ const Header = () => {
               aria-label="secondary tabs example"
             >
               <Tab
-                value="1"
+                value="/"
                 sx={{
                   color: "white",
                   fontWeight: "700",
@@ -198,9 +201,11 @@ const Header = () => {
                   "&.Mui-selected": { color: "#ffc305" },
                 }}
                 label="Home"
+                component={Link}
+                to="/"
               />
               <Tab
-                value="2"
+                value="/news"
                 sx={{
                   color: "white",
                   fontWeight: "700",
@@ -208,9 +213,11 @@ const Header = () => {
                   "&.Mui-selected": { color: "#ffc305" },
                 }}
                 label="News"
+                component={Link}
+                to="/news"
               />
               <Tab
-                value="3"
+                value="fantasy-tips"
                 sx={{
                   color: "white",
                   fontWeight: "700",
@@ -218,9 +225,11 @@ const Header = () => {
                   "&.Mui-selected": { color: "#ffc305" },
                 }}
                 label="Fantasy Tips"
+                component={Link}
+                to="/fantasy-tips"
               />
               <Tab
-                value="4"
+                value="/match-predictions"
                 sx={{
                   color: "white",
                   fontWeight: "700",
@@ -228,9 +237,11 @@ const Header = () => {
                   "&.Mui-selected": { color: "#ffc305" },
                 }}
                 label="Match Predictions"
+                component={Link}
+                to="/match-predictions"
               />
               <Tab
-                value="5"
+                value="ipl"
                 sx={{
                   color: "white",
                   fontWeight: "700",
@@ -238,9 +249,11 @@ const Header = () => {
                   "&.Mui-selected": { color: "#ffc305" },
                 }}
                 label="IPL 2023"
+                component={Link}
+                to="/ipl"
               />
               <Tab
-                value="6"
+                value="/web-stories"
                 sx={{
                   color: "white",
                   fontWeight: "700",
@@ -248,9 +261,11 @@ const Header = () => {
                   "&.Mui-selected": { color: "#ffc305" },
                 }}
                 label="Web Stories"
+                component={Link}
+                to="/web-stories"
               />
               <Tab
-                value="7"
+                value="/leader-boards"
                 sx={{
                   color: "white",
                   fontWeight: "700",
@@ -258,6 +273,8 @@ const Header = () => {
                   "&.Mui-selected": { color: "#ffc305" },
                 }}
                 label="Leaderboards"
+                component={Link}
+                to="/leader-boards"
               />
             </Tabs>
             <div className="be-an-expert">
@@ -288,11 +305,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{
-  /* <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
-  <LinkTab label="Page One" href="/drafts" />
-  <LinkTab label="Page Two" href="/trash" />
-  <LinkTab label="Page Three" href="/spam" />
-</Tabs> */
-}
